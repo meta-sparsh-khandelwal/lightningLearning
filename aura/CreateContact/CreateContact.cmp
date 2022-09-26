@@ -1,0 +1,53 @@
+<aura:component controller="CreateContactController">
+    <aura:handler name="addContact" event="c:addContactEvent" action="{!c.handleAddContact}" />
+    <aura:attribute name="showSuccess" type="boolean" default="false"/>
+    <aura:attribute name="showError" type="boolean" default="false"/>
+    <aura:renderIf isTrue="{!v.showSuccess}">
+        <div class="slds-notify slds-notify_alert slds-alert_success" id="successAlert" role="alert">
+            <span class="slds-assistive-text">success</span>
+            <span class="slds-icon_container slds-icon-utility-success slds-m-right_x-small"
+                title="Description of icon when needed">
+            </span>
+            <h2>Contact Record Inserted
+            </h2>
+            <div class="slds-notify__close">
+                <button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse" title="Close">
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+            </div>
+        </div>
+        <aura:set attribute="else">
+        </aura:set>
+    </aura:renderIf>
+    <aura:renderIf isTrue="{!v.showError}">
+        <div class="slds-notify slds-notify_alert slds-alert_error" id="errorAlert" role="alert">
+            <span class="slds-assistive-text">error</span>
+            <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small"
+                title="Description of icon when needed">
+            </span>
+            <h2>Contact Record Not Inserted
+                <a href="#">More Information</a>
+            </h2>
+            <div class="slds-notify__close">
+                <button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse" title="Close">
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+            </div>
+        </div>
+        <aura:set attribute="else">
+        </aura:set>
+    </aura:renderIf>
+    <lightning:layout>
+        <lightning:layoutItem padding="around-small" size="6">
+            <div aria-labelledby="newcontactform">
+                <fieldset class="slds-box slds-theme_default slds-container_small">
+                    <legend id="newcontactform" class="slds-text-heading_small
+                    slds-p-vertical_medium">
+                        Add Contact
+                    </legend>
+                    <c:ContactForm />
+                </fieldset>
+            </div>
+        </lightning:layoutItem>
+    </lightning:layout>
+</aura:component>

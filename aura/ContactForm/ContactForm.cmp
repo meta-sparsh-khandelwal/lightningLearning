@@ -1,0 +1,21 @@
+<aura:component>
+    <aura:registerEvent name="addContact" type="c:addContactEvent" />
+    <aura:attribute name="newContact" type="Contact" default="{ 'sobjectType': 'Contact',
+                             'FirstName': '',
+                             'LastName': '',
+                             'Email': '' }" />
+    <form class="slds-form_stacked">
+        <lightning:input aura:id="contactForm" label="FirstName" name="contactFirstName" value="{!v.newContact.FirstName}"
+            required="true" />
+        <lightning:input aura:id="contactForm" label="LastName" name="contactLastName" value="{!v.newContact.LastName}"
+            required="true" />
+        <lightning:input type="email" aura:id="contactForm" label="Email" name="contactEmail"
+            value="{!v.newContact.Email}" />
+            <lightning:input type="phone" aura:id="contactForm" label="Phone" name="contactPhone"
+            value="{!v.newContact.Phone}" />
+            <lightning:input type="fax" aura:id="contactForm" label="Fax" name="contactFax"
+            value="{!v.newContact.Fax}" />
+        <lightning:button label="Add Contact" class="slds-m-top_medium" variant="brand"
+            onclick="{!c.clickAddContact}" />
+    </form>
+</aura:component>
